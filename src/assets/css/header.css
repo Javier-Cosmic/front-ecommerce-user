@@ -1,0 +1,80 @@
+header {
+  background: #393e46;
+  height: 10vh;
+  color: #76ead7;
+  padding: 0 3rem;
+}
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-header {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+a:hover {
+  color: #76ead7;
+}
+
+.link-header {
+  margin-right: 2rem;
+}
+
+.icon-cart {
+  color: #c4fb6d;
+  margin: 0 0 0px 6px;
+  font-size: 1.1rem;
+  display: inline;
+}
+
+@media (max-width: 455px) {
+  header {
+    padding: 0 0.1rem;
+  }
+
+  a {
+    font-size: 0.9rem;
+  }
+
+  .title-header {
+    font-size: 1.05rem;
+  }
+
+  .icon-cart {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 600px) {
+  header {
+    padding: 0 1.1rem;
+  }
+
+  .link-header {
+    margin-right: 0.7rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1280px) {
+  .title-header {
+    font-size: 2rem;
+  }
+
+  a {
+    font-size: 1.5rem;
+  }
+
+  .icon-cart {
+    font-size: 1.3rem;
+  }
+}
+
+/*# sourceMappingURL=header.css.map */

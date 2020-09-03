@@ -3,6 +3,7 @@ import {
     LOGIN_SUCCESS,
     GET_USER_AUTH,
     MSG_ERROR,
+    CLEAR_MSG,
     LOGOUT
 } from '../../types';
 
@@ -44,6 +45,12 @@ export default (state, action) => {
                 ...state,
                 message: action.payload,
                 loading: false
+            }
+        }
+
+        case CLEAR_MSG:{
+            return{
+                message: null
             }
         }
     

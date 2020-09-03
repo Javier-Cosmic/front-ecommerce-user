@@ -17,4 +17,4 @@ const AdminMain = () => {
     )
 }
 
-export default AdminMain;
+export default React.memo(AdminMain);

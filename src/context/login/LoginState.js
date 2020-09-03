@@ -3,11 +3,13 @@ import LoginContext from './LoginContext';
 import LoginReducer from './LoginReducer';
 import AxiosUrl from '../../config/AxiosUrl';
 import tokenAuth from '../../config/token';
+import {clear} from '../utils';
 import { 
     LOADING, 
     LOGIN_SUCCESS,
     GET_USER_AUTH,
     MSG_ERROR,
+    CLEAR_MSG,
     LOGOUT
 } from '../../types';
 
@@ -45,7 +47,9 @@ const LoginState = ({ children }) => {
             dispatch({
                 type: MSG_ERROR,
                 payload: error.response.data.msg
-            })            
+            })  
+
+            clear(CLEAR_MSG, dispatch);
         }
     }
 
@@ -69,6 +73,8 @@ const LoginState = ({ children }) => {
                 type: MSG_ERROR,
                 payload: error.response.data.msg
             })
+
+            clear(CLEAR_MSG, dispatch);
         }
     }
 

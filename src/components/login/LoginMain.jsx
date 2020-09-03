@@ -4,7 +4,7 @@ import LoginContext from '../../context/login/LoginContext';
 const LoginMain = () => {
     const loginContext = useContext(LoginContext);
     const { login, loading, message } = loginContext;
-
+    const [alert, setAlert] = useState(false);
     const [data, setData] = useState({
         email: '',
         password: '',
@@ -18,28 +18,42 @@ const LoginMain = () => {
             ...data,
             [e.target.name]: e.target.value,
         });
+        if (email.length > 6 || password.length > 6) {
+            setAlert(false);
+        }
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        login(data);
+        if (email.trim() === '' || password.trim() === '') {
+            setAlert(true)
+            return;
+        }
 
-        setData({
-            email: '',
-            password: '',
-        });
+        login(data);
     };
 
     useEffect(() => {
         inputRef.current.focus();
-    }, [])
+
+        if (!message) {
+            setData({
+                email: '',
+                password: '',
+            });
+            return;
+        }
+    }, [message])
 
     return (
         <div className='container-login'>
             <div className='login'>
                 <form onSubmit={onSubmit}>
-                    <h1 className='login-title'>admin panel</h1>
+                    <div className='container-elements'>
+                        <h1 className='login-title'>admin panel</h1>
+                        <i className="fas fa-user-cog icon-login"></i>
+                    </div>
                     <div>
                         <input
                             ref={inputRef}
@@ -48,6 +62,7 @@ const LoginMain = () => {
                             placeholder='Ingresa tu correo'
                             value={email}
                             onChange={onChange}
+                            className={alert ? 'input-error' : null}
                         />
                     </div>
                     <div>
@@ -57,12 +72,14 @@ const LoginMain = () => {
                             placeholder='Ingresa tu contraseña'
                             value={password}
                             onChange={onChange}
+                            className={alert ? 'input-error' : null}
                         />
                     </div>
-                    <div className='container-button'>
+                    <div className='container-elements'>
                         <div className='login-message'>
-                            {loading && <h1>Cargando...</h1>}
-                            {message && <h1>{message}</h1>}
+                            {loading && <h1 className='login-msg-loading'>Cargando...</h1>}
+                            {message && <h1 className='login-msg-error'>{message}</h1>}
+                            {alert && <h1 className='login-msg-loading'>Los campos son obligatorios</h1>}
                         </div>
                         <button className='button' type='submit'>Ingresar</button>
                     </div>
