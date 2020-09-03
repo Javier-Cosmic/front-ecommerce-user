@@ -7,7 +7,8 @@ import {
     LOADING, 
     LOGIN_SUCCESS,
     GET_USER_AUTH,
-    MSG_ERROR
+    MSG_ERROR,
+    LOGOUT
 } from '../../types';
 
 const LoginState = ({ children }) => {
@@ -15,8 +16,8 @@ const LoginState = ({ children }) => {
     const initialState = {
         loading: false,
         token: localStorage.getItem('token'),
-        isAuth: null,
-        userAuth: null,
+        isAuth: false,
+        userdata: null,
         message: null
     }
 
@@ -32,7 +33,7 @@ const LoginState = ({ children }) => {
         try {
             loadingF();
             const response = await AxiosUrl.post('/api/v1/login', data);
-    
+            
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: response.data
@@ -71,8 +72,19 @@ const LoginState = ({ children }) => {
         }
     }
 
+    const logout = () => {
+        dispatch({
+            type: LOGOUT
+        })
+    }
+
     const values = {
+        userAuth,
         login,
+        logout,
+        userdata: state.userdata,
+        token: state.token,
+        isAuth: state.isAuth,
         loading: state.loading,
         message: state.message
     }

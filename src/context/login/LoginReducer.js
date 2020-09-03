@@ -18,14 +18,25 @@ export default (state, action) => {
             return{
                 ...state,
                 isAuth: true,
-                loading: false
+                loading: false,
             }
 
         case GET_USER_AUTH:
             return{
                 ...state,
-                userAuth: action.payload,
-                loading: false
+                userdata: action.payload,
+                isAuth: true,
+                loading: false,
+            }
+
+        case LOGOUT:
+            localStorage.removeItem('token');
+            return{
+                ...state,
+                token: null,
+                isAuth: false,
+                userdata: null,
+                loading: false,
             }
 
         case MSG_ERROR:{

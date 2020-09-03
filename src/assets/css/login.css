@@ -1,0 +1,66 @@
+.container-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login {
+  padding: 30px;
+  background: #ff4b5c;
+  width: 30rem;
+}
+.login input {
+  height: 35px;
+  outline: none;
+  border-style: none;
+  width: 100%;
+  margin-bottom: 1.2em;
+  padding-left: 10px;
+}
+.login input:focus {
+  border: 3px solid #66bfbf;
+}
+
+::placeholder {
+  color: #a1a1a1;
+}
+
+.login-title {
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 2em;
+  color: white;
+  margin-bottom: 0.4em;
+}
+
+.container-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  padding: 0.4em 0.5em;
+  width: 130px;
+  background: #056674;
+  color: white;
+  border-style: none;
+  outline: none;
+  transition: all 0.2s;
+}
+.button:hover {
+  cursor: pointer;
+  background: #66bfbf;
+  color: black;
+}
+
+.login-message {
+  margin-left: 8px;
+  padding-left: 10px;
+  align-self: center;
+  color: white;
+  box-shadow: -8px 0px 0px #056674;
+}
+
+/*# sourceMappingURL=login.css.map */
