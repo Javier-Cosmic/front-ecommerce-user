@@ -44,7 +44,7 @@ const LoginMain = () => {
             });
             return;
         }
-    }, [message])
+    }, [])
 
     return (
         <div className='container-login'>

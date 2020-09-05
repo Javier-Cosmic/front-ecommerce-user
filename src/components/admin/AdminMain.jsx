@@ -1,20 +1,33 @@
-import React, {useContext} from 'react';
-import LoginContext from '../../context/login/LoginContext';
-import Sidebar from './Sidebar';
+import React, {useEffect} from 'react';
+import { routes } from '../../route/RoutesSidebar';
+import Admin from '../admin/Admin';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 const AdminMain = () => {
 
-    const loginContext = useContext(LoginContext);
-    const {logout} = loginContext;
+    useEffect(() => {
+        setTimeout(() => {
+            localStorage.removeItem('token');
+            
+        }, 900000)
+
+    }, []);
 
     return (
-        <>
-            <h1>Admin panel</h1>
-            <Sidebar />
-            
-            <button onClick={() => logout()}>Cerrar sesion</button>
-        </>
-    )
-}
+        <div className='container-admin'>
+            <Router>
+                <Admin />
+                {routes.map((route) => (
+                    <Route
+                        key={route.path}
+                        path={route.path}
+                        exact={true}
+                        component={route.main}
+                    />
+                ))}
+            </Router>
+        </div>
+    );
+};
 
-export default React.memo(AdminMain);
+export default AdminMain;

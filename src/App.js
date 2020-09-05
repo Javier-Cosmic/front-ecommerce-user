@@ -3,8 +3,8 @@ import './assets/css/main.css';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import LoginMain from './components/login/LoginMain';
 import Home from './components/home/HomeMain';
-import CreateUser from './components/users/CreateUser';
 import LoginState from './context/login/LoginState';
+import AdminState from './context/admin/AdminState';
 import AdminMain from './components/admin/AdminMain';
 import tokenAuth from './config/token';
 import PublicRoute from './route/PublicRoute';
@@ -18,7 +18,8 @@ if (token) {
 
 function App() {
     return (
-            <LoginState>
+        <LoginState>
+            <AdminState>
                 <Router>
                     <Switch>
                         <Route exact path='/' component={Home} />
@@ -27,19 +28,12 @@ function App() {
                             path='/login'
                             component={LoginMain}
                         />
-                        <PrivateRoute
-                            path='/admin/create'
-                            component={CreateUser}
-                        />
-                        <PrivateRoute
-                            exact
-                            path='/admin'
-                            component={AdminMain}
-                        />
+                        <PrivateRoute path='/admin' component={AdminMain} />
                         <Route render={() => <h1>Error 404</h1>} />
                     </Switch>
                 </Router>
-            </LoginState>
+            </AdminState>
+        </LoginState>
     );
 }
 
