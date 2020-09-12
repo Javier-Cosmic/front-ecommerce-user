@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import LoginContext from '../context/login/LoginContext';
 
-const PublicRoute = ({component: Component, history, ...rest}) => {
+const PublicRoute = ({component: Component, ...rest}) => {
 
     const loginContext = useContext(LoginContext);
     const {isAuth, token} = loginContext;

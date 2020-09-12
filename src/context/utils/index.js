@@ -1,7 +1,8 @@
-export const clear = (type, dispatch) => {
+export const clear = (type, dispatch, time = 5000) => {
     setTimeout(() => {
         dispatch({
             type: type
         })
-    }, 5000)
+
+    }, time)
 }

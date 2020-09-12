@@ -25,5 +25,4 @@ export const routes = [
         sidebar: () => <h1>Example sidebar</h1>,
         main: () => <EditPerfil />
     }
-
 ]

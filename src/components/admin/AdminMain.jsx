@@ -1,32 +1,29 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { routes } from '../../route/RoutesSidebar';
-import Admin from '../admin/Admin';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
+import Admin from '../admin/Admin';
+import AdminHeader from './AdminHeader';
 
 const AdminMain = () => {
-
-    useEffect(() => {
-        setTimeout(() => {
-            localStorage.removeItem('token');
-            
-        }, 900000)
-
-    }, []);
-
     return (
-        <div className='container-admin'>
+        <>
+            <AdminHeader />
             <Router>
-                <Admin />
-                {routes.map((route) => (
-                    <Route
-                        key={route.path}
-                        path={route.path}
-                        exact={true}
-                        component={route.main}
-                    />
-                ))}
+                <div className='container-admin'>
+                    <Admin />
+                    <div className='component-admin'>
+                        {routes.map((route) => (
+                            <Route
+                                key={route.path}
+                                path={route.path}
+                                exact={true}
+                                component={route.main}
+                            />
+                        ))}
+                    </div>
+                </div>
             </Router>
-        </div>
+        </>
     );
 };
 

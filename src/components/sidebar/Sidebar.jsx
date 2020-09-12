@@ -1,62 +1,70 @@
 import React, { useContext } from 'react';
 import LoginContext from '../../context/login/LoginContext';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const Sidebar = () => {
     const loginContext = useContext(LoginContext);
-    const { logout, userdata } = loginContext;
+
+    const { userdata } = loginContext;
 
     return (
-        <aside>
-            <div className='sidebar-header-style'>
-                <h1>Admin user : {userdata ? userdata.name : null}</h1>
-                <div className='sidebar-header'>
-                    <button
-                        className='button btn-side'
-                        onClick={() => logout()}
-                    >
-                        Cerrar sesion
-                    </button>
+        <>
+            <aside>
+                <div className='sidebar-header-style'>
+                    <h1>Admin panel</h1>
                 </div>
-            </div>
-            <nav className='sidebar-link'>
-                <ul>
-                    <div className='style-link'>
-                        <li>
-                            <i className='fas fa-folder-plus icon-sidebar'></i>
-                            <NavLink
-                                activeClassName='link-active'
-                                to='/admin/create-product'
-                            >
-                                Crear producto
-                            </NavLink>
-                        </li>
+                <div className='header-line'>
+                    <div className='sidebar-header'>
+                        <img
+                            className='img-perfil'
+                            src={
+                                userdata
+                                    ? userdata.image_url
+                                    : 'https://res.cloudinary.com/imgproyectos/image/upload/v1599614481/photo-users/default-user_cuowlr.jpg'
+                            }
+                            alt='avatar'
+                        />
                     </div>
-                    <div className='style-link'>
-                        <li>
-                            <i className='fas fa-user-plus icon-sidebar'></i>
-                            <NavLink
-                                activeClassName='link-active'
-                                to='/admin/create-user'
-                            >
-                                Agregar administrador
-                            </NavLink>
-                        </li>
+                    <div className='style-link-edit'>
+                        {userdata && (
+                            <h1>
+                                {userdata.name} {userdata.lastname}
+                                <Link to='/admin/edit-perfil'>
+                                    <i className='fas fa-user-edit icon-sidebar icon-edit'></i>
+                                </Link>
+                            </h1>
+                        )}
                     </div>
-                    <div className='style-link'>
-                        <li>
-                            <i className='fas fa-user-edit icon-sidebar'></i>
-                            <NavLink
-                                activeClassName='link-active'
-                                to='/admin/edit-perfil'
-                            >
-                                Editar mi perfil
-                            </NavLink>
-                        </li>
-                    </div>
-                </ul>
-            </nav>
-        </aside>
+                </div>
+                <h2 className='title-sidebar'>Administración</h2>
+                <nav className='sidebar-link'>
+                    <ul>
+                        <div className='style-link'>
+                            <li>
+                                <i className="fas fa-plus-square icon-sidebar"></i>
+                                <NavLink
+                                    activeClassName='link-active'
+                                    to='/admin/create-product'
+                                >
+                                    Crear producto
+                                </NavLink>
+                            </li>
+                        </div>
+                        <div className='style-link'>
+                            <li>
+                                <i className='fas fa-user-plus icon-sidebar'></i>
+                                <NavLink
+                                    activeClassName='link-active'
+                                    to='/admin/create-user'
+                                >
+                                    Agregar administrador
+                                </NavLink>
+                            </li>
+                        </div>
+                    </ul>
+                </nav>
+            </aside>
+        </>
     );
 };
 

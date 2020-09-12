@@ -18,7 +18,7 @@ const Admin = () => {
             </button>
 
             <Responsive>
-                <Sidebar/>    
+                <Sidebar/>   
             </Responsive>
 
             <Desktop>

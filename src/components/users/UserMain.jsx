@@ -1,9 +1,10 @@
 import React from 'react';
+import CreateUser from './CreateUser';
 
 const UserMain = () => {
 
     return (
-        <h1>Usuario pagina principal</h1>
+        <CreateUser />
     )
 }
 

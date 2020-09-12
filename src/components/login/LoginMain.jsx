@@ -1,9 +1,15 @@
 import React, { useState, useContext, useRef, useEffect } from 'react';
 import LoginContext from '../../context/login/LoginContext';
+import AlertContext from '../../context/alerts/AlertContext';
+import { Link } from 'react-router-dom';
 
 const LoginMain = () => {
     const loginContext = useContext(LoginContext);
-    const { login, loading, message } = loginContext;
+    const { login, loading, message, link, linkRender} = loginContext;
+
+    const alertContext = useContext(AlertContext);
+    const { alertmsg } = alertContext;
+
     const [alert, setAlert] = useState(false);
     const [data, setData] = useState({
         email: '',
@@ -19,6 +25,7 @@ const LoginMain = () => {
             [e.target.name]: e.target.value,
         });
         if (email.length > 6 || password.length > 6) {
+            linkRender(true);
             setAlert(false);
         }
     };
@@ -27,7 +34,8 @@ const LoginMain = () => {
         e.preventDefault();
 
         if (email.trim() === '' || password.trim() === '') {
-            setAlert(true)
+            linkRender(false);
+            setAlert(true);
             return;
         }
 
@@ -44,7 +52,9 @@ const LoginMain = () => {
             });
             return;
         }
-    }, [])
+
+    }, []);
+
 
     return (
         <div className='container-login'>
@@ -52,7 +62,7 @@ const LoginMain = () => {
                 <form onSubmit={onSubmit}>
                     <div className='container-elements'>
                         <h1 className='login-title'>admin panel</h1>
-                        <i className="fas fa-user-cog icon-login"></i>
+                        <i className='fas fa-user-cog icon-login'></i>
                     </div>
                     <div>
                         <input
@@ -76,12 +86,35 @@ const LoginMain = () => {
                         />
                     </div>
                     <div className='container-elements'>
-                        <div className='login-message'>
-                            {loading && <h1 className='login-msg-loading'>Cargando...</h1>}
-                            {message && <h1 className='login-msg-error'>{message}</h1>}
-                            {alert && <h1 className='login-msg-loading'>Los campos son obligatorios</h1>}
-                        </div>
-                        <button className='button' type='submit'>Ingresar</button>
+                        {link ? (
+                            <Link className='link-home' to='/'>Home</Link>
+                        ) : (
+                            <div className='login-message'>
+                                {loading && (
+                                    <h1 className='login-msg-loading'>
+                                        Cargando...
+                                    </h1>
+                                )}
+                                {message && (
+                                    <h1 className='login-msg-error'>
+                                        {message}
+                                    </h1>
+                                )}
+                                {alert && (
+                                    <h1 className='login-msg-loading'>
+                                        Los campos son obligatorios
+                                    </h1>
+                                )}
+                                {alertmsg && (
+                                    <h1 className='login-msg-loading'>
+                                        {alertmsg}
+                                    </h1>
+                                )}
+                            </div>
+                        )}
+                        <button className='button' type='submit'>
+                            Ingresar
+                        </button>
                     </div>
                 </form>
             </div>

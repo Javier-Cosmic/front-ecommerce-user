@@ -9,8 +9,10 @@
     "axios": "^0.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-idle-timer": "^4.3.6",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "wouter": "^2.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
