@@ -20,23 +20,23 @@ if (token) {
 function App() {
     return (
         <LoginState>
-        <AdminState>
-            <AlertState>
-            <Router>
-                <Switch>
-                    <PublicRoute exact path='/' component={Home} /> 
-                    <PublicRoute
-                        exact
-                        path='/login'
-                        component={LoginMain}
-                    />
-                    <PrivateRoute exact path='/home' component={Home} />
-                    <PrivateRoute path='/admin' component={AdminMain} />
-                    <Route render={() => <h1>Error 404</h1>} />
-                </Switch>
-            </Router>
-            </AlertState>
-        </AdminState>
+            <AdminState>
+                <AlertState>
+                    <Router>
+                        <Switch>
+                            <PublicRoute exact path='/' component={Home} />
+                            <PublicRoute
+                                exact
+                                path='/login'
+                                component={LoginMain}
+                            />
+                            <PrivateRoute exact path='/home' component={Home} />
+                            <PrivateRoute path='/admin' component={AdminMain} />
+                            <Route render={() => <h1>Error 404</h1>} />
+                        </Switch>
+                    </Router>
+                </AlertState>
+            </AdminState>
         </LoginState>
     );
 }

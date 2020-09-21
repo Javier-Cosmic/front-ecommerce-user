@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import LoginContext from '../../context/login/LoginContext';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
     const loginContext = useContext(LoginContext);
-
     const { userdata } = loginContext;
 
     return (
@@ -15,33 +14,30 @@ const Sidebar = () => {
                 </div>
                 <div className='header-line'>
                     <div className='sidebar-header'>
-                        <img
-                            className='img-perfil'
-                            src={
-                                userdata
-                                    ? userdata.image_url
-                                    : 'https://res.cloudinary.com/imgproyectos/image/upload/v1599614481/photo-users/default-user_cuowlr.jpg'
-                            }
-                            alt='avatar'
-                        />
+                            <img
+                                className='img-perfil'
+                                src={
+                                    userdata
+                                        ? userdata.image_url
+                                        : 'https://res.cloudinary.com/imgproyectos/image/upload/v1599614481/photo-users/default-user_cuowlr.jpg'
+                                }
+                                alt='avatar'
+                            />
                     </div>
                     <div className='style-link-edit'>
                         {userdata && (
                             <h1>
                                 {userdata.name} {userdata.lastname}
-                                <Link to='/admin/edit-perfil'>
-                                    <i className='fas fa-user-edit icon-sidebar icon-edit'></i>
-                                </Link>
                             </h1>
                         )}
                     </div>
                 </div>
-                <h2 className='title-sidebar'>Administración</h2>
+                <h2 className='title-sidebar'>Ventas</h2>
                 <nav className='sidebar-link'>
                     <ul>
                         <div className='style-link'>
                             <li>
-                                <i className="fas fa-plus-square icon-sidebar"></i>
+                                <i className='fas fa-plus-square icon-sidebar'></i>
                                 <NavLink
                                     activeClassName='link-active'
                                     to='/admin/create-product'
@@ -57,7 +53,7 @@ const Sidebar = () => {
                                     activeClassName='link-active'
                                     to='/admin/create-user'
                                 >
-                                    Agregar administrador
+                                    Agregar usuario
                                 </NavLink>
                             </li>
                         </div>

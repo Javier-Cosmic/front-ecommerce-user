@@ -3,7 +3,6 @@ import LoginContext from '../../context/login/LoginContext';
 import {Link} from 'react-router-dom';
 
 const AdminHeader = () => {
-
     const loginContext = useContext(LoginContext);
     const { logout } = loginContext;
 

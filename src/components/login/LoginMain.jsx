@@ -53,6 +53,11 @@ const LoginMain = () => {
             return;
         }
 
+        return () => {
+            console.log('limpiando message')
+            
+        }
+
     }, []);
 
 
@@ -91,8 +96,8 @@ const LoginMain = () => {
                         ) : (
                             <div className='login-message'>
                                 {loading && (
-                                    <h1 className='login-msg-loading'>
-                                        Cargando...
+                                    <h1 className='login-msg-loading margin'>
+                                        Cargando... <div className='loading-spinner'></div>
                                     </h1>
                                 )}
                                 {message && (

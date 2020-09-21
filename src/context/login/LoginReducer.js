@@ -57,6 +57,7 @@ export default (state, action) => {
         case CLEAR_MSG:{
             return{
                 message: null,
+                loading: false,
                 linkhome: true
             }
         }
