@@ -1,9 +1,14 @@
 import React from 'react';
+import CreateProduct from '../products/CreateProduct';
+import ListProduct from '../products/ListProduct';
 
 const ProductMain = () => {
 
     return (
-        <h1>Producto main</h1>
+        <div className='product-main'>
+            <CreateProduct />
+            <ListProduct />
+        </div>
     )
 }
 

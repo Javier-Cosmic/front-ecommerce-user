@@ -8,6 +8,7 @@ export const CLEAN_FIELDS = 'CLEAN_FIELDS';
 // alerts
 export const ALERT = 'ALERT';
 export const CLEAR_ALERT = 'CLEAR_ALERT';
+export const VALIDATE = 'VALIDATE';
 
 // login
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -23,4 +24,8 @@ export const SHOW_ALL_USER = 'SHOW_ALL_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const EDIT_USER = 'EDIT_USER';
 export const UPDATE_USER = 'UPDATE_USER';
-export const VALIDATE = 'VALIDATE';
+
+// product
+export const CREATE_PRODUCT = 'CREATE_PRODUCT';
+export const SHOW_PRODUCTS = 'SHOW_PRODUCTS';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';

@@ -15,6 +15,12 @@ const ListUser = () => {
         
     }, []);
 
+    // const isEmpty = () => {
+    //     if (users.length === 0) {
+    //         return <tbody><td>No hay usuarios</td></tbody> 
+    //     }
+    // }
+
     return (
         <div className='container-table'>
             <table className='table-container'>

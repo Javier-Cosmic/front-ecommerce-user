@@ -10,13 +10,7 @@ const CreateUser = () => {
     const { validate } = alertContext;
     const {
         createUser,
-        msgsuccess,
-        loading,
-        msgerror,
-        edituser,
         errorvalidate,
-        cleanFields,
-        edittitle,
     } = adminContext;
 
     const [
@@ -91,23 +85,11 @@ const CreateUser = () => {
             <Form
                 onSubmit={onSubmit}
                 onChange={onChange}
-                name={name}
-                lastname={lastname}
-                email={email}
-                password={password}
-                cellphone={cellphone}
+                datauser={datauser}
                 inputRef={inputRef}
                 onImage={onImage}
                 image={image}
                 fileSelectedRef={fileSelectedRef}
-                success={msgsuccess}
-                loading={loading}
-                msgError={msgerror}
-                edituser={edituser}
-                setDatauser={setDatauser}
-                datauser={datauser}
-                cleanFields={cleanFields}
-                edittitle={edittitle}
             />
         </>
     );

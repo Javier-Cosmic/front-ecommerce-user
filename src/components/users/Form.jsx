@@ -4,17 +4,21 @@ import Title from '../users/Title';
 const Form = ({
     onSubmit,
     onChange,
-    name,
-    lastname,
-    email,
-    password,
-    cellphone,
+    datauser,
     inputRef,
     onImage,
     image,
     fileSelectedRef,
 }) => {
     const ref = useRef();
+
+    const {
+        name,
+        lastname,
+        email,
+        password,
+        cellphone,
+    } = datauser;
 
     useEffect(() => {
         ref.current.focus();

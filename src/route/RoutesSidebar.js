@@ -7,7 +7,7 @@ export const routes = [
         path: '/admin',
         exact: true,
         sidebar: () => <h1>Example sidebar</h1>,
-        main: () => <h1>Selecciona una accion en el menu</h1> 
+        main: () => <h1 className='title-form-product'>Selecciona una accion en el menu</h1> 
     },
     {
         path: '/admin/create-product',
